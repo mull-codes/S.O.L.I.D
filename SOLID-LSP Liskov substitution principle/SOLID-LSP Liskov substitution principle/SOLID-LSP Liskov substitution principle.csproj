@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{004979EF-9645-48B7-8F40-68FB82A006B4}</ProjectGuid>
+    <ProjectGuid>{AA6DB184-750A-465E-9B25-00AA2AA24284}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SOLID_OCP__Open_closed_principle</RootNamespace>
-    <AssemblyName>SOLID-OCP -Open closed principle</AssemblyName>
+    <RootNamespace>SOLID_LSP_Liskov_substitution_principle</RootNamespace>
+    <AssemblyName>SOLID-LSP Liskov substitution principle</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Customer.cs" />
-    <Compile Include="CustomerOCPSolution.cs" />
+    <Compile Include="FileLogger.cs" />
+    <Compile Include="IDiscount.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
