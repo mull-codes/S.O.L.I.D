@@ -7,7 +7,7 @@ using System.IO;
 
 namespace SOLID_LSP_Liskov_substitution_principle
 {
-    class FileLogger
+    class FileLogger : ILogger
     {
         public void Handle(string error)
         {
@@ -15,6 +15,22 @@ namespace SOLID_LSP_Liskov_substitution_principle
             //sw.WriteLine(error);
             string err = "Error: " + error + Environment.NewLine + Environment.NewLine;
             File.AppendAllText("logs/cust_add_error_logs.txt", err);
+        }
+    }
+
+    class EverViewerLogger : ILogger
+    {
+        public void Handle(string error)
+        {
+            // log errors to event viewer
+        }
+    }
+
+    class EmailLogger : ILogger
+    {
+        public void Handle(string error)
+        {
+            // send errors in email
         }
     }
 }

@@ -9,8 +9,25 @@ namespace SOLID_LSP_Liskov_substitution_principle
 {
     class Customer : IDiscount, IDatabase
     {
-        
-        private FileLogger logger = new FileLogger();
+        private string customerType;
+        private ILogger obj;
+
+        public Customer(ILogger i)
+        {
+            obj = i;
+            customerType = "";
+        }
+
+        public void setCustomerType(string s)
+        {
+            this.customerType = s;
+        }
+
+        public virtual string getCustomerType()
+        {
+            return this.customerType;
+        }
+
         public virtual void Add(string s)
         {
             try
@@ -22,8 +39,16 @@ namespace SOLID_LSP_Liskov_substitution_principle
             }
             catch (Exception err)
             {
+                if (customerType == "1")
+                {
+                    obj.Handle(err.Message.ToString() + " ::whatever error::");
+                }
+                else
+                {
+                    obj.Handle(err.Message.ToString() + " ::whatever else::");
+                }
 
-                logger.Handle(err.ToString());
+                //logger.Handle(err.ToString());
             }
         }
 
@@ -31,21 +56,46 @@ namespace SOLID_LSP_Liskov_substitution_principle
         {
             return TotalSales;
         }
+
+        public virtual void Read()
+        {
+            // Implements  logic for read
+        }
     }
 
     class SilverCustomer : Customer
     {
+        public SilverCustomer(ILogger i) : base(i)
+        {
+            this.setCustomerType("Silver");
+        }
+
         public override double getDiscount(double TotalSales)
         {
             return base.getDiscount(TotalSales) - 50;
         }
+
+        public override string getCustomerType()
+        {
+            return base.getCustomerType();
+        }
     }
 
-    class goldCustomer : SilverCustomer
+    class GoldCustomer : SilverCustomer
     {
+        public GoldCustomer(ILogger i) : base(i)
+        {
+            this.setCustomerType("Gold");
+        }
+
         public override double getDiscount(double TotalSales)
         {
             return base.getDiscount(TotalSales) - 100;
+        }
+
+        public override string getCustomerType()
+        {
+            return base.getCustomerType();
         }
     }
 
