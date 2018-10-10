@@ -22,7 +22,7 @@ namespace SOLID_OCP__Open_closed_principle
         }
     }
 
-    class goldCustomer : SilverCustomer
+    class GoldCustomer : SilverCustomer
     {
         public override double getDiscount(double TotalSales)
         {

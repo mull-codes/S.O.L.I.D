@@ -19,6 +19,7 @@ namespace SOLID_LSP_Liskov_substitution_principle
             List<IDatabase> Customers = new List<IDatabase>();
             Customers.Add(new SilverCustomer(new EmailLogger()));
             Customers.Add(new GoldCustomer(new EmailLogger()));
+            //Customers.Add(new Enquiry());
 
             //Write to file
             foreach (Customer o in Customers)
